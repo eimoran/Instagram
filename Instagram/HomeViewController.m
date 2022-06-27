@@ -6,8 +6,12 @@
 //
 
 #import "HomeViewController.h"
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface HomeViewController ()
+- (IBAction)logout:(id)sender;
 
 @end
 
@@ -28,4 +32,20 @@
 }
 */
 
+- (IBAction)logout:(id)sender {
+    
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+        if (!error)
+        {
+
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            self.view.window.rootViewController = loginViewController;
+        }
+    }];
+//    NSLog(@"Logged Out");
+//    [self performSegueWithIdentifier:@"logout" sender:self];
+    
+}
 @end

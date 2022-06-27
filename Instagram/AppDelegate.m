@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,10 +26,14 @@
         }];
 
         [Parse initializeWithConfiguration:config];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    self.window.rootViewController = navigationController;
+    
     
 //    if (PFUser.currentUser) {
 //            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            
+//
 //            self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
 //        }
 

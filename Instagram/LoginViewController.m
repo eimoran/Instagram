@@ -41,7 +41,7 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"home" sender:self];
+            [self performSegueWithIdentifier:@"home" sender:nil];
             
             // manually segue to logged in view
         }
@@ -57,7 +57,7 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"home" sender:self];
+            [self performSegueWithIdentifier:@"home" sender:nil];
             // display view controller that needs to shown after successful login
         }
     }];
