@@ -32,6 +32,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"header"];
     // Do any additional setup after loading the view.
     self.postArray = [[NSMutableArray alloc] init];
     [self getPosts];
@@ -89,14 +90,34 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-    cell.post = self.postArray[indexPath.row];
+    cell.post = self.postArray[indexPath.section];
+//    NSLog(@"%@", temp);
+//    cell.post = temp[indexPath.row];
     
     [cell setData];
     return cell;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.postArray.count;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return self.postArray.count;
+    return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
+//    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+//    NSLog(@"%@", PFUser.currentUser.username);
+    header.textLabel.text = PFUser.currentUser.username;
+    header.textLabel.textColor = [UIColor blackColor];
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

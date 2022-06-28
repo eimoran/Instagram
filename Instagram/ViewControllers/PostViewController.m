@@ -29,7 +29,7 @@
     
     UITapGestureRecognizer *imageTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(choosePhoto:)];
     [imageTapRecognizer setDelegate:self];
-        [self.postImage addGestureRecognizer:imageTapRecognizer];
+    [self.postImage addGestureRecognizer:imageTapRecognizer];
 }
 
 
@@ -64,8 +64,12 @@
 */
 
 - (IBAction)post:(id)sender {
+    NSLog(@"%@", NSStringFromCGSize(self.postImage.frame.size));
     if (self.hasChosenimage)
     {
+    
+        CGSize size = CGSizeMake(self.view.frame.size.width, 270);
+        self.postImage.image = [self resizeImage:self.postImage.image withSize:size];
         [Post postUserImage:self.postImage.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error == nil)
             {
@@ -115,5 +119,19 @@
     }
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 @end

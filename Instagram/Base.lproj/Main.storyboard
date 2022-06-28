@@ -100,13 +100,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HL9-DN-8tw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HL9-DN-8tw">
                                 <rect key="frame" x="0.0" y="56" width="414" height="786"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="448" id="qxR-vI-ca9" customClass="PostCell">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="448"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="448"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qxR-vI-ca9" id="sQG-lX-f52">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
@@ -119,7 +119,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eET-Nw-XQk">
-                                                    <rect key="frame" x="0.0" y="11" width="414" height="300"/>
+                                                    <rect key="frame" x="0.0" y="11" width="398" height="300"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="DLT-ac-042"/>
                                                     </constraints>
@@ -135,7 +135,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="G30-HZ-94H" secondAttribute="trailing" constant="16" id="0VV-Ey-pbB"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="centerX" secondItem="sQG-lX-f52" secondAttribute="centerX" id="0qx-be-TQe"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="top" secondItem="eET-Nw-XQk" secondAttribute="bottom" id="6A8-6t-HiJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="eET-Nw-XQk" secondAttribute="trailing" id="9pr-bv-rcT"/>
+                                                <constraint firstAttribute="trailing" secondItem="eET-Nw-XQk" secondAttribute="trailing" constant="16" id="9pr-bv-rcT"/>
                                                 <constraint firstItem="eET-Nw-XQk" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" id="CtD-IO-Hjs"/>
                                                 <constraint firstItem="G30-HZ-94H" firstAttribute="leading" secondItem="WZL-PC-kdm" secondAttribute="leading" id="UjO-4B-ZPY"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" constant="8" id="Wxf-yA-pxm"/>
@@ -217,7 +217,7 @@
                                     <action selector="choosePhoto:" destination="g4F-h2-0gd" eventType="touchUpInside" id="sVu-dY-ysf"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write a Caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zDc-AE-4vn">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zDc-AE-4vn">
                                 <rect key="frame" x="178" y="56" width="216" height="150"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <color key="textColor" systemColor="labelColor"/>
