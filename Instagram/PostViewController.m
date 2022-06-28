@@ -1,37 +1,35 @@
 //
-//  PhotoViewController.m
+//  PostViewController.m
 //  Instagram
 //
 //  Created by Eric Moran on 6/27/22.
 //
 
-#import "PhotoViewController.h"
+#import "PostViewController.h"
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
+#import "AppDelegate.h"
 #import "Post.h"
 
-@interface PhotoViewController ()
+@interface PostViewController ()
 
 @end
 
-@implementation PhotoViewController
+@implementation PostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+}
+
+- (IBAction)makePost:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-
-    // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
     [self presentViewController:imagePickerVC animated:YES completion:nil];
+//    [self.view addSubvie]
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -40,9 +38,14 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
-//    NSLog(@"Hello?");
-
+    NSLog(@"%@", originalImage);
+    
+    
     // Do something with the images (based on your use case)
+//    [Post postUserImage:originalImage withCaption:@"new post" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//
+//    }];
+    
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];

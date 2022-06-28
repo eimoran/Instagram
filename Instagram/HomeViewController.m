@@ -9,12 +9,14 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "Post.h"
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 - (IBAction)logout:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton2;
 - (IBAction)makePost:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -23,10 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (!PFUser.currentUser)
-    {
-//        self.logoutButton2.enabled = true;
-    }
 }
 
 /*
@@ -57,8 +55,9 @@
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-
+    
     [self presentViewController:imagePickerVC animated:YES completion:nil];
+//    [self.view addSubvie]
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -68,8 +67,13 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     NSLog(@"%@", originalImage);
-
+    
+    
     // Do something with the images (based on your use case)
+    [Post postUserImage:originalImage withCaption:@"new post 2" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+
+    }];
+    
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
