@@ -51,13 +51,7 @@
     
 }
 - (IBAction)makePost:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-//    [self.view addSubvie]
+    [self performSegueWithIdentifier:@"post" sender:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

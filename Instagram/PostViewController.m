@@ -12,6 +12,10 @@
 #import "Post.h"
 
 @interface PostViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *caption;
+@property (weak, nonatomic) IBOutlet UIImageView *postImage;
+- (IBAction)choosePhoto:(id)sender;
+- (IBAction)post:(id)sender;
 
 @end
 
@@ -22,25 +26,16 @@
     // Do any additional setup after loading the view.
 }
 
-- (IBAction)makePost:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-//    [self.view addSubvie]
-}
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+//    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    self.postImage.image = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
-    NSLog(@"%@", originalImage);
-    
-    
+
     // Do something with the images (based on your use case)
 //    [Post postUserImage:originalImage withCaption:@"new post" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
 //
@@ -61,4 +56,33 @@
 }
 */
 
+- (IBAction)post:(id)sender {
+    if (![self.caption.text isEqual:@""])
+    {
+        
+        [Post postUserImage:self.postImage.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        }];
+    }
+    else
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Caption"
+                                     message:@"Please write a caption for your post"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+         {}];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+}
+
+- (IBAction)choosePhoto:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
 @end

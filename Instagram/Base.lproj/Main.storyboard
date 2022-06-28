@@ -106,7 +106,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Photo"/>
                                 <connections>
-                                    <action selector="makePost:" destination="9XA-Zs-8c3" eventType="touchUpInside" id="j5N-5Z-ZJS"/>
+                                    <action selector="makePost:" destination="9XA-Zs-8c3" eventType="touchUpInside" id="qhB-xY-ipJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbB-VM-eRO">
@@ -140,7 +140,7 @@
                     <connections>
                         <outlet property="logoutButton" destination="RIq-jy-GZd" id="Kgp-Ln-udU"/>
                         <outlet property="logoutButton2" destination="fbB-VM-eRO" id="dS1-lF-T1b"/>
-                        <segue destination="NiQ-20-DwB" kind="presentation" identifier="photo" id="4QZ-i7-2We"/>
+                        <segue destination="NiQ-20-DwB" kind="presentation" identifier="post" id="4QZ-i7-2We"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vat-62-qOD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -150,27 +150,52 @@
         <!--Item-->
         <scene sceneID="WI2-jU-u5X">
             <objects>
-                <viewController id="g4F-h2-0gd" sceneMemberID="viewController">
+                <viewController id="g4F-h2-0gd" customClass="PostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5eJ-vq-5G5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xZH-sa-eje">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="insta_camera_btn" translatesAutoresizingMaskIntoConstraints="NO" id="xZH-sa-eje">
                                 <rect key="frame" x="20" y="56" width="138" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tbg-sA-RQb">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7O-FF-R4O">
                                 <rect key="frame" x="166" y="56" width="97" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2HB-D1-0rQ">
+                                <rect key="frame" x="12" y="192" width="115" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Choose Photo"/>
+                                <connections>
+                                    <action selector="choosePhoto:" destination="g4F-h2-0gd" eventType="touchUpInside" id="sVu-dY-ysf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rLq-GC-gp4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="GYa-HV-QNj"/>
-                    <navigationItem key="navigationItem" id="fvu-0K-9FX"/>
+                    <navigationItem key="navigationItem" id="fvu-0K-9FX">
+                        <barButtonItem key="rightBarButtonItem" title="Post" style="plain" id="GCV-KB-mEe">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zAX-UJ-5kc">
+                                <rect key="frame" x="302" y="12.5" width="92" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Post"/>
+                                <connections>
+                                    <action selector="post:" destination="g4F-h2-0gd" eventType="touchUpInside" id="CUn-a3-R4m"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="caption" destination="a7O-FF-R4O" id="SR3-eP-yOW"/>
+                        <outlet property="postImage" destination="xZH-sa-eje" id="jkc-9i-bhE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEd-C8-nJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -255,6 +280,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon-60" width="60" height="60"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
