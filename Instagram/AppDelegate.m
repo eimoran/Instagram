@@ -33,8 +33,8 @@
     
     if (PFUser.currentUser) {
         
-        NSLog(@"%@", PFUser.currentUser);
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        NSLog(@"%@", PFUser.currentUser);
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window = [[[UIApplication sharedApplication] delegate] window];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     }

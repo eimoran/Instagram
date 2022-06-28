@@ -23,21 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-//    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-//    imagePickerVC.delegate = self;
-//    imagePickerVC.allowsEditing = YES;
-//
-//    // The Xcode simulator does not support taking pictures, so let's first check that the camera is indeed supported on the device before trying to present it.
-//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    }
-//    else {
-//        NSLog(@"Camera 🚫 available so we will use photo library instead");
-//        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    }
-
-////    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    // Do any additional setup after loading the view
 }
 
 
@@ -73,8 +59,26 @@
 - (IBAction)post:(id)sender {
     if (![self.caption.text isEqual:@""])
     {
-        
         [Post postUserImage:self.postImage.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error == nil)
+            {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success!"
+                                             message:@"Successfully Created Post"
+                                             preferredStyle:UIAlertControllerStyleAlert];
+
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                 {}];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:YES completion:nil];
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UIViewController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+                self.view.window.rootViewController = tabBarController;
+            }
+            else
+            {
+                NSLog(@"%@", error.localizedDescription);
+            }
         }];
     }
     else
@@ -88,7 +92,6 @@
         [alert addAction:ok];
         [self presentViewController:alert animated:YES completion:nil];
     }
-    
 }
 
 - (IBAction)choosePhoto:(id)sender {
