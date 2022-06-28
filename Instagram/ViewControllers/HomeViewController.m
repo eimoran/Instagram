@@ -69,6 +69,7 @@
 }
 
 - (IBAction)logout:(id)sender {
+    NSLog(@"TESTING");
     
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
@@ -90,10 +91,6 @@
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     cell.post = self.postArray[indexPath.row];
     
-//    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell.post.image.url]];
-//    cell.postImage.image = [UIImage imageWithData: imageData];
-////    cell.postImage.image = cell.post.image;
-//    cell.postCaption.text = cell.post.caption;
     [cell setData];
     return cell;
 }
