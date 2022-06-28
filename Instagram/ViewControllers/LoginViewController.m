@@ -76,7 +76,6 @@
     self.emailField.hidden = false;
     if ([self.usernameField isEqual:@""] || [self.emailField isEqual:@""] || [self.passwordField isEqual:@""])
     {
-        
     }
     else{
         [self registerUser];
@@ -87,7 +86,6 @@
 - (IBAction)Login:(id)sender {
     if ([self.usernameField isEqual:@""])
     {
-        
     }
     else{
         [self loginUser];

@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Post.h"
 #import "PostCell.h"
+#import "PostDetailsViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -30,6 +31,7 @@
     self.navigationController.navigationBarHidden = false;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     // Do any additional setup after loading the view.
     self.postArray = [[NSMutableArray alloc] init];
     [self getPosts];
@@ -88,17 +90,24 @@
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     cell.post = self.postArray[indexPath.row];
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell.post.image.url]];
-    cell.postImage.image = [UIImage imageWithData: imageData];
-//    cell.postImage.image = cell.post.image;
-    NSLog(@"%@", cell.post.caption);
-    NSLog(@"TESTING");
-    cell.postCaption.text = cell.post.caption;
+//    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell.post.image.url]];
+//    cell.postImage.image = [UIImage imageWithData: imageData];
+////    cell.postImage.image = cell.post.image;
+//    cell.postCaption.text = cell.post.caption;
+    [cell setData];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    NSLog(@"%lu", self.postArray.count);
     return self.postArray.count;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"details"]){
+        PostDetailsViewController *detailsVC = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        detailsVC.post = self.postArray[indexPath.row];
+        }
+}
+
 @end

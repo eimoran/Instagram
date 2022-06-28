@@ -6,17 +6,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "post.h"
+#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PostCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UILabel *postCaption;
-@property (weak, nonatomic) IBOutlet UIButton *logout2;
-- (IBAction)logout2:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
 @property (weak, nonatomic) Post *post;
+
+- (void)setData;
 
 @end
 

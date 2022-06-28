@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 - (IBAction)choosePhoto:(id)sender;
 - (IBAction)post:(id)sender;
+@property (nonatomic) BOOL hasChosenimage;
 
 @end
 
@@ -24,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view
+    self.hasChosenimage = false;
     
     UITapGestureRecognizer *imageTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(choosePhoto:)];
     [imageTapRecognizer setDelegate:self];
@@ -38,6 +40,7 @@
 //    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     self.postImage.image = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    self.hasChosenimage = true;
     
 
     // Do something with the images (based on your use case)
@@ -61,7 +64,7 @@
 */
 
 - (IBAction)post:(id)sender {
-    if (![self.caption.text isEqual:@""])
+    if (self.hasChosenimage)
     {
         [Post postUserImage:self.postImage.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error == nil)
@@ -87,8 +90,8 @@
     }
     else
     {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Caption"
-                                     message:@"Please write a caption for your post"
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Photo"
+                                     message:@"Please choose a Photo for your post"
                                      preferredStyle:UIAlertControllerStyleAlert];
 
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
