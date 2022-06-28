@@ -11,7 +11,10 @@
 #import "AppDelegate.h"
 
 @interface HomeViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
 - (IBAction)logout:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton2;
+- (IBAction)makePost:(id)sender;
 
 @end
 
@@ -20,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (!PFUser.currentUser)
+    {
+//        self.logoutButton2.enabled = true;
+    }
 }
 
 /*
@@ -38,14 +45,33 @@
         // PFUser.current() will now be nil
         if (!error)
         {
-
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
             self.view.window.rootViewController = loginViewController;
         }
     }];
-//    NSLog(@"Logged Out");
-//    [self performSegueWithIdentifier:@"logout" sender:self];
     
+}
+- (IBAction)makePost:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    NSLog(@"%@", originalImage);
+
+    // Do something with the images (based on your use case)
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

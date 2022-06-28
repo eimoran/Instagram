@@ -26,16 +26,18 @@
         }];
 
         [Parse initializeWithConfiguration:config];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    self.window.rootViewController = navigationController;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    LoginViewController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//    self.window.rootViewController = navigationController;
     
     
-//    if (PFUser.currentUser) {
-//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//
-//            self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-//        }
+    if (PFUser.currentUser) {
+        
+        NSLog(@"%@", PFUser.currentUser);
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.window = [[[UIApplication sharedApplication] delegate] window];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+    }
 
 //        return YES;
 
@@ -44,6 +46,8 @@
 
 
 #pragma mark - UISceneSession lifecycle
+
+
 
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {

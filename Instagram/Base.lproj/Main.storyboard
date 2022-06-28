@@ -99,29 +99,53 @@
                     <view key="view" contentMode="scaleToFill" id="VB5-XC-djV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbB-VM-eRO">
+                                <rect key="frame" x="208" y="193" width="85" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Log out 2"/>
+                                <connections>
+                                    <action selector="logout:" destination="9XA-Zs-8c3" eventType="touchUpInside" id="dIO-Do-4QK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoK-hr-xd4">
+                                <rect key="frame" x="159" y="428" width="62" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Photo"/>
+                                <connections>
+                                    <action selector="makePost:" destination="9XA-Zs-8c3" eventType="touchUpInside" id="j5N-5Z-ZJS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Wof-h1-0g4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="gfQ-M9-YaY">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="8Wu-SW-keY">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="bcx-9J-wbg">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="RIq-jy-GZd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sHO-mD-QsB">
                                 <rect key="frame" x="20" y="11" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log Out"/>
-                                <connections>
-                                    <action selector="logout:" destination="9XA-Zs-8c3" eventType="touchUpInside" id="Ztc-EQ-UG3"/>
-                                </connections>
                             </button>
+                            <connections>
+                                <action selector="logout:" destination="9XA-Zs-8c3" id="lU0-79-fjG"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="NiQ-20-DwB" kind="presentation" id="4QZ-i7-2We"/>
+                        <outlet property="logoutButton" destination="RIq-jy-GZd" id="Kgp-Ln-udU"/>
+                        <outlet property="logoutButton2" destination="fbB-VM-eRO" id="dS1-lF-T1b"/>
+                        <segue destination="NiQ-20-DwB" kind="presentation" identifier="photo" id="4QZ-i7-2We"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vat-62-qOD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="856"/>
+            <point key="canvasLocation" x="1208.6956521739132" y="855.80357142857144"/>
         </scene>
         <!--Item-->
         <scene sceneID="WI2-jU-u5X">
@@ -159,7 +183,7 @@
         <!--Item-->
         <scene sceneID="nt5-ZC-ck2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dbF-aP-Z2w" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="nav1" automaticallyAdjustsScrollViewInsets="NO" id="dbF-aP-Z2w" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="3Q6-lj-iP8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ibG-X2-WkR">
