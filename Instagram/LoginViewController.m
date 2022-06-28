@@ -68,17 +68,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([segue.identifier isEqualToString:@"home"]){
-//        [self performSegueWithIdentifier:@"home" sender:self];
-//        HomeViewController *detailsVC = [segue destinationViewController];
-//        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-//        detailsVC.tweet = self.arrayOfTweets[indexPath.row];
-        }
-//    else {
-//        UINavigationController *navigationController = [segue destinationViewController];
-//        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-//        composeController.delegate = self;
-//    }
+   
 }
 
 

@@ -11,7 +11,6 @@
 		59088E90E4720B55F36304D2 /* Pods_InstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 759FBD15A4645F0949631B79 /* Pods_InstagramTests.framework */; };
 		601D44BC286A61A40068E82D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601D44BB286A61A40068E82D /* LoginViewController.m */; };
 		601D44BF286A63AD0068E82D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601D44BE286A63AD0068E82D /* HomeViewController.m */; };
-		601D44C2286AC9580068E82D /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601D44C1286AC9580068E82D /* PhotoViewController.m */; };
 		601D44C5286ACCF60068E82D /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 601D44C4286ACCF60068E82D /* Post.m */; };
 		601D44C8286AD27A0068E82D /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 601D44C7286AD27A0068E82D /* PostCell.m */; };
 		601D44CB286AD9810068E82D /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601D44CA286AD9810068E82D /* PostViewController.m */; };
@@ -52,8 +51,6 @@
 		601D44BB286A61A40068E82D /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		601D44BD286A63AD0068E82D /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		601D44BE286A63AD0068E82D /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		601D44C0286AC9580068E82D /* PhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
-		601D44C1286AC9580068E82D /* PhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		601D44C3286ACCF60068E82D /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		601D44C4286ACCF60068E82D /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		601D44C6286AD27A0068E82D /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
@@ -156,8 +153,6 @@
 				601D44CA286AD9810068E82D /* PostViewController.m */,
 				601D44C6286AD27A0068E82D /* PostCell.h */,
 				601D44C7286AD27A0068E82D /* PostCell.m */,
-				601D44C0286AC9580068E82D /* PhotoViewController.h */,
-				601D44C1286AC9580068E82D /* PhotoViewController.m */,
 				60763CDD286A476100AB2920 /* Assets.xcassets */,
 				60763CDF286A476100AB2920 /* LaunchScreen.storyboard */,
 				60763CE2286A476100AB2920 /* Info.plist */,
@@ -452,7 +447,6 @@
 				601D44BC286A61A40068E82D /* LoginViewController.m in Sources */,
 				601D44C8286AD27A0068E82D /* PostCell.m in Sources */,
 				601D44BF286A63AD0068E82D /* HomeViewController.m in Sources */,
-				601D44C2286AC9580068E82D /* PhotoViewController.m in Sources */,
 				601D44C5286ACCF60068E82D /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
