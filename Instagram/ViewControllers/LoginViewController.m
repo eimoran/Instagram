@@ -42,8 +42,6 @@
         } else {
             NSLog(@"User registered successfully");
             [self performSegueWithIdentifier:@"home" sender:nil];
-            
-            // manually segue to logged in view
         }
     }];
 }
@@ -57,9 +55,9 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"home" sender:nil];
-            NSLog(@"%@", PFUser.currentUser);
-            // display view controller that needs to shown after successful login
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *tabViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+            self.view.window.rootViewController = tabViewController;
         }
     }];
 }

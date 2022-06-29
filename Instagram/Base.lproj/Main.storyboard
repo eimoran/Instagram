@@ -77,6 +77,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="CjS-mI-ZGa" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dbN-Mj-THP"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wUx-oo-Nvj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -194,7 +195,7 @@
             </objects>
             <point key="canvasLocation" x="1208.6956521739132" y="855.80357142857144"/>
         </scene>
-        <!--Item-->
+        <!--Compose-->
         <scene sceneID="WI2-jU-u5X">
             <objects>
                 <viewController id="g4F-h2-0gd" customClass="PostViewController" sceneMemberID="viewController">
@@ -240,7 +241,7 @@
                             <constraint firstItem="2HB-D1-0rQ" firstAttribute="top" secondItem="xZH-sa-eje" secondAttribute="bottom" constant="8" symbolic="YES" id="mfl-lm-LTd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="GYa-HV-QNj"/>
+                    <tabBarItem key="tabBarItem" title="Compose" id="GYa-HV-QNj"/>
                     <navigationItem key="navigationItem" id="fvu-0K-9FX">
                         <barButtonItem key="rightBarButtonItem" title="Post" style="plain" id="GCV-KB-mEe">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zAX-UJ-5kc">
@@ -332,11 +333,11 @@
             </objects>
             <point key="canvasLocation" x="4730" y="856"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="nt5-ZC-ck2">
             <objects>
-                <navigationController storyboardIdentifier="nav1" automaticallyAdjustsScrollViewInsets="NO" id="dbF-aP-Z2w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3Q6-lj-iP8"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dbF-aP-Z2w" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="3Q6-lj-iP8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ibG-X2-WkR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -351,11 +352,11 @@
             </objects>
             <point key="canvasLocation" x="394" y="856"/>
         </scene>
-        <!--Item-->
+        <!--Compose-->
         <scene sceneID="cte-KY-WtV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NiQ-20-DwB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="AdK-D9-W6b"/>
+                    <tabBarItem key="tabBarItem" title="Compose" id="AdK-D9-W6b"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRd-Op-2Mb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -370,11 +371,11 @@
             </objects>
             <point key="canvasLocation" x="2158" y="856"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="2cK-SK-YIX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="roW-ZV-zVs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="RHO-Zn-F0E"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="RHO-Zn-F0E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Goz-r8-hvO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -391,7 +392,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4QZ-i7-2We"/>
+        <segue reference="Ooo-VO-I7U"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon-60" width="60" height="60"/>

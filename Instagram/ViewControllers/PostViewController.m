@@ -68,7 +68,7 @@
     if (self.hasChosenimage)
     {
     
-        CGSize size = CGSizeMake(self.view.frame.size.width, 270);
+        CGSize size = CGSizeMake(1300, 1000);
         self.postImage.image = [self resizeImage:self.postImage.image withSize:size];
         [Post postUserImage:self.postImage.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error == nil)
@@ -105,6 +105,7 @@
     }
 }
 
+
 - (IBAction)choosePhoto:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -117,7 +118,7 @@
         NSLog(@"Camera 🚫 available so we will use photo library instead");
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
-    
+
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
