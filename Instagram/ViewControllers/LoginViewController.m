@@ -34,6 +34,7 @@
     newUser.username = self.usernameField.text;
     newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
+//    newUser.profilePic = nil;
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {

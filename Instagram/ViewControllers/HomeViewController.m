@@ -60,6 +60,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.postArray = posts;
+//            NSLog(@"%@", posts);
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -89,8 +90,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+//    NSLog(@"%@", self.postArray[indexPath.row][@"author"]);
     cell.post = self.postArray[indexPath.section];
-    
+    [cell.post.author fetchIfNeeded];
+    NSLog(@"%@", cell.post.author);
     [cell setData];
     return cell;
 }
@@ -106,7 +109,11 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    header.textLabel.text = PFUser.currentUser.username;
+    cell.post = self.postArray[section];
+    [cell.post.author fetchIfNeeded];
+    
+    
+    header.textLabel.text = cell.post.author.username;
     header.textLabel.textColor = [UIColor blackColor];
     
     return header;

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -114,13 +115,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZL-PC-kdm">
-                                                    <rect key="frame" x="8" y="311" width="398" height="100"/>
+                                                    <rect key="frame" x="8" y="315" width="398" height="96"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eET-Nw-XQk">
-                                                    <rect key="frame" x="0.0" y="11" width="398" height="300"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eET-Nw-XQk">
+                                                    <rect key="frame" x="8" y="11" width="398" height="300"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="DLT-ac-042"/>
                                                     </constraints>
@@ -135,9 +136,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="G30-HZ-94H" secondAttribute="trailing" constant="16" id="0VV-Ey-pbB"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="centerX" secondItem="sQG-lX-f52" secondAttribute="centerX" id="0qx-be-TQe"/>
-                                                <constraint firstItem="WZL-PC-kdm" firstAttribute="top" secondItem="eET-Nw-XQk" secondAttribute="bottom" id="6A8-6t-HiJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="eET-Nw-XQk" secondAttribute="trailing" constant="16" id="9pr-bv-rcT"/>
-                                                <constraint firstItem="eET-Nw-XQk" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" id="CtD-IO-Hjs"/>
+                                                <constraint firstItem="WZL-PC-kdm" firstAttribute="top" secondItem="eET-Nw-XQk" secondAttribute="bottom" constant="4" id="6A8-6t-HiJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="eET-Nw-XQk" secondAttribute="trailing" constant="8" id="9pr-bv-rcT"/>
+                                                <constraint firstItem="eET-Nw-XQk" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" constant="8" id="CtD-IO-Hjs"/>
                                                 <constraint firstItem="G30-HZ-94H" firstAttribute="leading" secondItem="WZL-PC-kdm" secondAttribute="leading" id="UjO-4B-ZPY"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" constant="8" id="Wxf-yA-pxm"/>
                                                 <constraint firstItem="G30-HZ-94H" firstAttribute="top" secondItem="WZL-PC-kdm" secondAttribute="bottom" constant="4" id="awe-nL-b7U"/>
@@ -317,21 +318,61 @@
             </objects>
             <point key="canvasLocation" x="1208.6956521739132" y="1594.4196428571429"/>
         </scene>
-        <!--Post Details View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="lmg-Wz-Ojv">
             <objects>
-                <viewController id="hA5-UM-ADj" customClass="PostDetailsViewController" sceneMemberID="viewController">
+                <viewController id="hA5-UM-ADj" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aj9-0B-yie">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="fyq-iz-rMV">
+                                <rect key="frame" x="20" y="56" width="123" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rZ3-9j-toh">
+                                <rect key="frame" x="0.0" y="244" width="414" height="515"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wek-my-OD9">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1HH-H2-JjF">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hnj-yL-y0l">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eok-ds-yUh">
+                                <rect key="frame" x="48" y="185" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Chnage Profile Photo"/>
+                                <connections>
+                                    <action selector="chooseProfilePic:" destination="hA5-UM-ADj" eventType="touchUpInside" id="VM7-O4-cu2"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5DU-j3-7Du"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="ycf-VP-d11"/>
+                    <connections>
+                        <outlet property="collectionView" destination="rZ3-9j-toh" id="hyR-Ae-Qx5"/>
+                        <outlet property="profilePic" destination="fyq-iz-rMV" id="d97-IZ-iO5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOv-5E-eCy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4730" y="856"/>
+            <point key="canvasLocation" x="4728.985507246377" y="855.80357142857144"/>
         </scene>
         <!--Home-->
         <scene sceneID="nt5-ZC-ck2">
@@ -392,12 +433,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ooo-VO-I7U"/>
+        <segue reference="4QZ-i7-2We"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon-60" width="60" height="60"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="insta_camera_btn" width="25" height="25"/>
+        <image name="profile_tab" width="25" height="25"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
