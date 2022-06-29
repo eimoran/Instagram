@@ -115,8 +115,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZL-PC-kdm">
-                                                    <rect key="frame" x="8" y="315" width="398" height="96"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="319" width="398" height="92"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -136,7 +136,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="G30-HZ-94H" secondAttribute="trailing" constant="16" id="0VV-Ey-pbB"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="centerX" secondItem="sQG-lX-f52" secondAttribute="centerX" id="0qx-be-TQe"/>
-                                                <constraint firstItem="WZL-PC-kdm" firstAttribute="top" secondItem="eET-Nw-XQk" secondAttribute="bottom" constant="4" id="6A8-6t-HiJ"/>
+                                                <constraint firstItem="WZL-PC-kdm" firstAttribute="top" secondItem="eET-Nw-XQk" secondAttribute="bottom" constant="8" id="6A8-6t-HiJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="eET-Nw-XQk" secondAttribute="trailing" constant="8" id="9pr-bv-rcT"/>
                                                 <constraint firstItem="eET-Nw-XQk" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" constant="8" id="CtD-IO-Hjs"/>
                                                 <constraint firstItem="G30-HZ-94H" firstAttribute="leading" secondItem="WZL-PC-kdm" secondAttribute="leading" id="UjO-4B-ZPY"/>

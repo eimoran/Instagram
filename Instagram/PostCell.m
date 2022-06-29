@@ -23,7 +23,15 @@
 - (void)setData {
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: self.post.image.url]];
     self.postImage.image = [UIImage imageWithData: imageData];
+    
     self.postCaption.text = self.post.caption;
+    self.postCaption.text = [NSString stringWithFormat:@"%@ %@", self.post.author.username, self.post.caption];
+    
+    NSMutableAttributedString *postText = [[NSMutableAttributedString alloc] initWithString:self.postCaption.text];
+    NSRange boldRange = [self.postCaption.text rangeOfString:self.post.author.username];
+    [postText addAttribute: NSFontAttributeName value:[UIFont boldSystemFontOfSize:16] range:boldRange];
+    [self.postCaption setAttributedText: postText];
+    
     [self setTimestamp];
 }
 

@@ -90,10 +90,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-//    NSLog(@"%@", self.postArray[indexPath.row][@"author"]);
     cell.post = self.postArray[indexPath.section];
     [cell.post.author fetchIfNeeded];
-    NSLog(@"%@", cell.post.author);
     [cell setData];
     return cell;
 }

@@ -67,7 +67,6 @@
     NSLog(@"%@", NSStringFromCGSize(self.postImage.frame.size));
     if (self.hasChosenimage)
     {
-    
         CGSize size = CGSizeMake(1300, 1000);
         self.postImage.image = [self resizeImage:self.postImage.image withSize:size];
         [Post postUserImage:self.postImage.image withCaption:self.caption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
