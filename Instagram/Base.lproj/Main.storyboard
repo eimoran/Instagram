@@ -280,13 +280,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-Y5-4ym">
-                                <rect key="frame" x="20" y="409.5" width="374" height="20.5"/>
+                                <rect key="frame" x="8" y="409.5" width="386" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nir-LD-2DZ">
-                                <rect key="frame" x="20" y="434" width="378" height="44"/>
+                                <rect key="frame" x="8" y="434" width="390" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
@@ -298,7 +298,7 @@
                             <constraint firstItem="Nir-LD-2DZ" firstAttribute="leading" secondItem="Kvb-Y5-4ym" secondAttribute="leading" id="0s1-fA-CX3"/>
                             <constraint firstItem="KmO-du-Fvg" firstAttribute="trailing" secondItem="Kvb-Y5-4ym" secondAttribute="trailing" constant="20" id="2Jc-2I-P49"/>
                             <constraint firstItem="vaB-3E-ym0" firstAttribute="leading" secondItem="KmO-du-Fvg" secondAttribute="leading" id="2Wh-ps-OcQ"/>
-                            <constraint firstItem="Kvb-Y5-4ym" firstAttribute="leading" secondItem="KmO-du-Fvg" secondAttribute="leading" constant="20" id="BeS-Xx-VXQ"/>
+                            <constraint firstItem="Kvb-Y5-4ym" firstAttribute="leading" secondItem="KmO-du-Fvg" secondAttribute="leading" constant="8" id="BeS-Xx-VXQ"/>
                             <constraint firstItem="KmO-du-Fvg" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Nir-LD-2DZ" secondAttribute="bottom" constant="286" id="C6B-yp-7cT"/>
                             <constraint firstItem="KmO-du-Fvg" firstAttribute="trailing" secondItem="vaB-3E-ym0" secondAttribute="trailing" id="JJk-t5-Dgt"/>
                             <constraint firstItem="Kvb-Y5-4ym" firstAttribute="top" secondItem="vaB-3E-ym0" secondAttribute="bottom" constant="4" id="V5X-bY-Mez"/>

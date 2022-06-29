@@ -84,7 +84,7 @@
     // Get the image captured by the UIImagePickerController
 //    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     self.profilePic.image = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+//    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 //    self.hasChosenimage = true;
     
 
@@ -94,13 +94,13 @@
 //    }];
     
     PFUser *user = [PFUser currentUser];
-    
+    CGSize size = CGSizeMake(1000, 1000);
+    self.profilePic.image = [self resizeImage:self.profilePic.image withSize:size];
     user[@"profilePic"] = [Post getPFFileFromImage:self.profilePic.image];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
-    CGSize size = CGSizeMake(1300, 1000);
-    self.profilePic.image = [self resizeImage:self.profilePic.image withSize:size];
+    
     [[PFUser currentUser] saveInBackground];
 }
 

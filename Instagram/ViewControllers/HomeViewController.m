@@ -41,16 +41,6 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (void)getPosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     query.limit = 20;
@@ -60,7 +50,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.postArray = posts;
-//            NSLog(@"%@", posts);
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -91,6 +80,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     cell.post = self.postArray[indexPath.section];
+    
+    /** this fixes*/
+//    [cell.post.author fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+//        [cell setData];
+//    }];
     [cell.post.author fetchIfNeeded];
     [cell setData];
     return cell;
@@ -108,13 +102,16 @@
     UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.post = self.postArray[section];
+//    [cell.post.author fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+//        header.textLabel.text = cell.post.author.username;
+//        header.textLabel.textColor = [UIColor blackColor];
+//    }];
     [cell.post.author fetchIfNeeded];
-    
-    
     header.textLabel.text = cell.post.author.username;
     header.textLabel.textColor = [UIColor blackColor];
-    
     return header;
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
