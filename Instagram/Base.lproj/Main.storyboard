@@ -121,13 +121,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eET-Nw-XQk">
-                                                    <rect key="frame" x="8" y="11" width="398" height="300"/>
+                                                    <rect key="frame" x="0.0" y="11" width="414" height="300"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="DLT-ac-042"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G30-HZ-94H">
-                                                    <rect key="frame" x="20" y="400" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G30-HZ-94H">
+                                                    <rect key="frame" x="8" y="415" width="390" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -137,8 +137,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="G30-HZ-94H" secondAttribute="trailing" constant="16" id="0VV-Ey-pbB"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="centerX" secondItem="sQG-lX-f52" secondAttribute="centerX" id="0qx-be-TQe"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="top" secondItem="eET-Nw-XQk" secondAttribute="bottom" constant="8" id="6A8-6t-HiJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="eET-Nw-XQk" secondAttribute="trailing" constant="8" id="9pr-bv-rcT"/>
-                                                <constraint firstItem="eET-Nw-XQk" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" constant="8" id="CtD-IO-Hjs"/>
+                                                <constraint firstAttribute="trailing" secondItem="eET-Nw-XQk" secondAttribute="trailing" id="9pr-bv-rcT"/>
+                                                <constraint firstItem="eET-Nw-XQk" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" id="CtD-IO-Hjs"/>
                                                 <constraint firstItem="G30-HZ-94H" firstAttribute="leading" secondItem="WZL-PC-kdm" secondAttribute="leading" id="UjO-4B-ZPY"/>
                                                 <constraint firstItem="WZL-PC-kdm" firstAttribute="leading" secondItem="sQG-lX-f52" secondAttribute="leading" constant="8" id="Wxf-yA-pxm"/>
                                                 <constraint firstItem="G30-HZ-94H" firstAttribute="top" secondItem="WZL-PC-kdm" secondAttribute="bottom" constant="4" id="awe-nL-b7U"/>
@@ -147,6 +147,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="G30-HZ-94H" secondAttribute="bottom" constant="16" id="zTi-40-lcN"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="eET-Nw-XQk" firstAttribute="centerX" secondItem="qxR-vI-ca9" secondAttribute="centerX" id="03F-3u-E2n"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="postCaption" destination="WZL-PC-kdm" id="fb6-KE-KvJ"/>
                                             <outlet property="postImage" destination="eET-Nw-XQk" id="lfa-E5-YKm"/>
