@@ -44,21 +44,32 @@
     // Configure output format
     formatter.dateStyle = NSDateFormatterShortStyle;
     formatter.timeStyle = NSDateFormatterNoStyle;
-    
+
     NSDate *curDate = [NSDate date];
     NSTimeInterval diff = [curDate timeIntervalSinceDate:date];
-            
+
     //format the created string based on if it was posted an hour or more ago or a minute or more ago
     NSInteger interval = diff;
-    long seconds = interval % 60;
     long minutes = (interval / 60) % 60;
     long hours = (interval / 3600);
-    if(hours > 1) {
-        self.timestamp.text = [NSString stringWithFormat:@"%ldh ago", hours];
-    } else if(minutes > 1) {
-        self.timestamp.text = [NSString stringWithFormat:@"%ldm ago", minutes];
-    } else {
-        self.timestamp.text = [NSString stringWithFormat:@"%lds ago", seconds];
+    NSDateComponentsFormatter *formatter2 = [[NSDateComponentsFormatter alloc] init];
+        formatter2.unitsStyle = NSDateComponentsFormatterUnitsStyleFull;
+//        formatter2.allowedUnits = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+        
+        
+    if (hours > 24)
+    {
+        formatter2.allowedUnits = NSCalendarUnitDay;
     }
+    else if(hours > 1) {
+        formatter2.allowedUnits = NSCalendarUnitHour;
+        
+    } else if(minutes > 1) {
+        formatter2.allowedUnits = NSCalendarUnitMinute;
+    } else {
+        formatter2.allowedUnits = NSCalendarUnitSecond;
+    }
+    NSString *elapsed = [formatter2 stringFromDate:date toDate:[NSDate date]];
+    self.timestamp.text = [NSString stringWithFormat:@"%@ ago", elapsed];
 }
 @end

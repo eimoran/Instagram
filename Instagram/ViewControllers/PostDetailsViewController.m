@@ -24,7 +24,6 @@
     self.postImage.image = [UIImage imageWithData: imageData];
     
     
-    self.postCaption.text = self.post.caption;
     self.postCaption.text = [NSString stringWithFormat:@"%@ %@", self.post.author.username, self.post.caption];
     
     NSMutableAttributedString *postText = [[NSMutableAttributedString alloc] initWithString:self.postCaption.text];
@@ -69,7 +68,7 @@
         formatter2.allowedUnits = NSCalendarUnitSecond;
     }
     NSString *elapsed = [formatter2 stringFromDate:date toDate:[NSDate date]];
-    self.timestamp.text = elapsed;
+    self.timestamp.text = [NSString stringWithFormat:@"%@ ago", elapsed];
 }
 
 /*

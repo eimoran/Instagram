@@ -42,29 +42,13 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     self.hasChosenimage = true;
     
-
-    // Do something with the images (based on your use case)
-//    [Post postUserImage:originalImage withCaption:@"new post" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//
-//    }];
-    
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)post:(id)sender {
-    NSLog(@"%@", NSStringFromCGSize(self.postImage.frame.size));
     if (self.hasChosenimage)
     {
         CGSize size = CGSizeMake(1300, 1000);

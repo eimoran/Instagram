@@ -9,11 +9,15 @@
 #import <Parse/Parse.h>
 #import "UIImageView+AFNetworking.h"
 #import "Post.h"
+#import "../GridCell.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *gridView;
 - (IBAction)chooseProfilePic:(id)sender;
+@property (weak, nonatomic) NSArray *postArray;
+//@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 
 @end
@@ -23,11 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.gridView.dataSource = self;
+    self.gridView.delegate = self;
     
     UITapGestureRecognizer *imageTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseProfilePic:)];
     [imageTapRecognizer setDelegate:self];
     [self.profilePic addGestureRecognizer:imageTapRecognizer];
-    
+    [self getPosts];
     PFUser *user = [PFUser currentUser];
     PFFileObject *pic = user[@"profilePic"];
     
@@ -40,18 +46,30 @@
     else{
         self.profilePic.image = [UIImage imageNamed:@"profile_tab"];
     }
+//    self.refreshControl = [[UIRefreshControl alloc] init];
+//    [self.refreshControl addTarget:self action:@selector(getPosts) forControlEvents:UIControlEventValueChanged];
+//    [self.gridView insertSubview:self.refreshControl atIndex:0];
     
 }
 
-/*
-#pragma mark - Navigation
+- (void)getPosts {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    query.limit = 20;
+    [query orderByDescending:@"createdAt"];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            self.postArray = posts;
+            [self.gridView reloadData];
+//            NSLog(@"%@", self.postArray);
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+//        [self.refreshControl endRefreshing];
+    }];
 }
-*/
+
 
 
 
@@ -59,7 +77,6 @@
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-//    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
@@ -71,27 +88,12 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
-- (IBAction)post:(id)sender {
-    
-    
-    
-    
-    
-}
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
 //    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     self.profilePic.image = info[UIImagePickerControllerOriginalImage];
 //    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-//    self.hasChosenimage = true;
-    
-
-    // Do something with the images (based on your use case)
-//    [Post postUserImage:originalImage withCaption:@"new post" withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//
-//    }];
     
     PFUser *user = [PFUser currentUser];
     CGSize size = CGSizeMake(1000, 1000);
@@ -116,6 +118,25 @@
     UIGraphicsEndImageContext();
     
     return newImage;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)gridView cellForItemAtIndexPath:
+    (NSIndexPath *)indexPath {
+    NSLog(@"TESTING");
+    GridCell *cell = [gridView dequeueReusableCellWithReuseIdentifier:@"GridCell" forIndexPath:indexPath];
+    
+    cell.post = self.postArray[indexPath.row];
+    NSLog(@"%@", cell.post);
+    [cell.post fetchIfNeeded];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell.post.profilePic]];
+    cell.profilePost.image = [UIImage imageWithData: imageData];
+    
+    return cell;
+}
+
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.postArray.count;
 }
 
 @end
