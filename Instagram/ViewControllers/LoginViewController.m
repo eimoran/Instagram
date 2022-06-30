@@ -75,6 +75,7 @@
     self.emailField.hidden = false;
     if ([self.usernameField isEqual:@""] || [self.emailField isEqual:@""] || [self.passwordField isEqual:@""])
     {
+        
     }
     else{
         [self registerUser];

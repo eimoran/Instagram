@@ -71,6 +71,9 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query includeKey:@"author"];
     query.limit = 100;
+    NSLog(@"%@", [PFUser currentUser].objectId);
+    PFUser *user = [PFUser currentUser];
+    [query whereKey:@"author" equalTo:user];
     [query orderByDescending:@"createdAt"];
 
     // fetch data asynchronously
