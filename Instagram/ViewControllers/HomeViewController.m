@@ -43,7 +43,8 @@
 
 - (void)getPosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.limit = 20;
+    [query includeKey:@"author"];
+    query.limit = 100;
     [query orderByDescending:@"createdAt"];
 
     // fetch data asynchronously
@@ -59,8 +60,6 @@
 }
 
 - (IBAction)logout:(id)sender {
-    NSLog(@"TESTING");
-    
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
         if (!error)
@@ -85,7 +84,7 @@
 //    [cell.post.author fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
 //        [cell setData];
 //    }];
-    [cell.post.author fetchIfNeeded];
+//    [cell.post.author fetchIfNeeded];
     [cell setData];
     return cell;
 }
@@ -102,7 +101,7 @@
     UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"header"];
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     cell.post = self.postArray[section];
-    [cell.post.author fetchIfNeeded];
+//    [cell.post.author fetchIfNeeded];
     header.textLabel.text = cell.post.author.username;
     header.textLabel.textColor = [UIColor blackColor];
     return header;
@@ -119,7 +118,6 @@
         PostDetailsViewController *detailsVC = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         detailsVC.post = self.postArray[indexPath.section];
-        NSLog(@"%@", detailsVC.post);
     }
 }
 

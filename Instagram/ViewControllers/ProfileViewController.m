@@ -11,11 +11,11 @@
 #import "Post.h"
 #import "../GridCell.h"
 
-@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UIImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UICollectionView *gridView;
 - (IBAction)chooseProfilePic:(id)sender;
-@property (weak, nonatomic) NSArray *postArray;
+@property (strong, nonatomic) NSMutableArray *postArray;
 //@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
@@ -29,11 +29,23 @@
     // Do any additional setup after loading the view.
     self.gridView.dataSource = self;
     self.gridView.delegate = self;
+//    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.gridView.collectionViewLayout;
+//    layout.minimumLineSpacing =15;
+//    layout.minimumInteritemSpacing  = 0;
+//    CGFloat itemWidth = 120;//(self.gridView.frame.size.width/3 - 15);
+//    CGFloat itemHeight = itemWidth;
+//    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+//    self.gridView.heightAnchor =
     
     UITapGestureRecognizer *imageTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseProfilePic:)];
     [imageTapRecognizer setDelegate:self];
     [self.profilePic addGestureRecognizer:imageTapRecognizer];
+    
+    
+    self.postArray = [[NSMutableArray alloc] init];
     [self getPosts];
+    
+    
     PFUser *user = [PFUser currentUser];
     PFFileObject *pic = user[@"profilePic"];
     
@@ -46,14 +58,12 @@
     else{
         self.profilePic.image = [UIImage imageNamed:@"profile_tab"];
     }
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.refreshControl addTarget:self action:@selector(getPosts) forControlEvents:UIControlEventValueChanged];
-//    [self.gridView insertSubview:self.refreshControl atIndex:0];
     
 }
 
 - (void)getPosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query includeKey:@"author"];
     query.limit = 20;
     [query orderByDescending:@"createdAt"];
 
@@ -122,13 +132,12 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)gridView cellForItemAtIndexPath:
     (NSIndexPath *)indexPath {
-    NSLog(@"TESTING");
+//    NSLog(@"%@", self.postArray);
     GridCell *cell = [gridView dequeueReusableCellWithReuseIdentifier:@"GridCell" forIndexPath:indexPath];
     
     cell.post = self.postArray[indexPath.row];
-    NSLog(@"%@", cell.post);
-    [cell.post fetchIfNeeded];
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell.post.profilePic]];
+//    [cell.post fetchIfNeeded];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell.post.image.url]];
     cell.profilePost.image = [UIImage imageWithData: imageData];
     
     return cell;
