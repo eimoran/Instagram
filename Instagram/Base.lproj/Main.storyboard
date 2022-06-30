@@ -330,17 +330,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="fyq-iz-rMV">
-                                <rect key="frame" x="20" y="56" width="150" height="150"/>
+                                <rect key="frame" x="20" y="85" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="PXh-Lv-1mH"/>
-                                    <constraint firstAttribute="height" constant="150" id="pK5-d3-hDI"/>
+                                    <constraint firstAttribute="width" constant="120" id="PXh-Lv-1mH"/>
+                                    <constraint firstAttribute="height" constant="120" id="pK5-d3-hDI"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rZ3-9j-toh">
                                 <rect key="frame" x="0.0" y="260" width="414" height="499"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wek-my-OD9">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wek-my-OD9">
                                     <size key="itemSize" width="120" height="120"/>
+                                    <size key="estimatedItemSize" width="120" height="120"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -353,16 +354,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2hF-oi-5vE">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2hF-oi-5vE">
                                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="2hF-oi-5vE" secondAttribute="trailing" id="4bX-b9-fLJ"/>
-                                                <constraint firstItem="2hF-oi-5vE" firstAttribute="leading" secondItem="hnj-yL-y0l" secondAttribute="leading" id="Cat-qs-tf1"/>
-                                                <constraint firstAttribute="bottom" secondItem="2hF-oi-5vE" secondAttribute="bottom" id="Njd-Bw-GwF"/>
-                                                <constraint firstItem="2hF-oi-5vE" firstAttribute="top" secondItem="hnj-yL-y0l" secondAttribute="top" id="chr-jh-dSM"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="profilePost" destination="2hF-oi-5vE" id="T9H-Fc-HUM"/>
@@ -378,19 +374,27 @@
                                     <action selector="chooseProfilePic:" destination="hA5-UM-ADj" eventType="touchUpInside" id="Jjo-UH-eoe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0S6-ZE-MNX">
+                                <rect key="frame" x="167.5" y="56" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5DU-j3-7Du"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5DU-j3-7Du" firstAttribute="bottom" secondItem="rZ3-9j-toh" secondAttribute="bottom" constant="54" id="DzT-0D-dkv"/>
                             <constraint firstItem="eok-ds-yUh" firstAttribute="leading" secondItem="5DU-j3-7Du" secondAttribute="leading" constant="48" id="HC6-9M-KRz"/>
-                            <constraint firstItem="fyq-iz-rMV" firstAttribute="top" secondItem="5DU-j3-7Du" secondAttribute="top" id="OVk-IH-c9E"/>
+                            <constraint firstItem="fyq-iz-rMV" firstAttribute="top" secondItem="5DU-j3-7Du" secondAttribute="top" constant="29" id="OVk-IH-c9E"/>
                             <constraint firstItem="5DU-j3-7Du" firstAttribute="trailing" secondItem="eok-ds-yUh" secondAttribute="trailing" constant="20" id="PnX-bV-V2i"/>
                             <constraint firstItem="rZ3-9j-toh" firstAttribute="leading" secondItem="5DU-j3-7Du" secondAttribute="leading" id="Rrg-iR-kUw"/>
-                            <constraint firstItem="eok-ds-yUh" firstAttribute="top" secondItem="fyq-iz-rMV" secondAttribute="bottom" constant="8" id="bVH-qz-d6b"/>
+                            <constraint firstItem="fyq-iz-rMV" firstAttribute="top" secondItem="0S6-ZE-MNX" secondAttribute="bottom" constant="8" id="T0J-XI-wzA"/>
+                            <constraint firstItem="eok-ds-yUh" firstAttribute="top" secondItem="fyq-iz-rMV" secondAttribute="bottom" constant="9" id="bVH-qz-d6b"/>
                             <constraint firstItem="5DU-j3-7Du" firstAttribute="trailing" secondItem="rZ3-9j-toh" secondAttribute="trailing" id="cco-38-Zdg"/>
                             <constraint firstItem="fyq-iz-rMV" firstAttribute="leading" secondItem="5DU-j3-7Du" secondAttribute="leading" constant="20" id="gBh-Px-QjT"/>
-                            <constraint firstItem="5DU-j3-7Du" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="fyq-iz-rMV" secondAttribute="trailing" constant="271" id="qZt-SE-X0u"/>
+                            <constraint firstItem="0S6-ZE-MNX" firstAttribute="centerX" secondItem="5DU-j3-7Du" secondAttribute="centerX" id="koW-D1-wnV"/>
+                            <constraint firstItem="5DU-j3-7Du" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="fyq-iz-rMV" secondAttribute="trailing" constant="274" id="qZt-SE-X0u"/>
                             <constraint firstItem="rZ3-9j-toh" firstAttribute="top" secondItem="eok-ds-yUh" secondAttribute="bottom" constant="16" id="y6s-Wt-ZBD"/>
                         </constraints>
                     </view>
@@ -398,6 +402,7 @@
                     <connections>
                         <outlet property="gridView" destination="rZ3-9j-toh" id="rXq-Qp-Zcb"/>
                         <outlet property="profilePic" destination="fyq-iz-rMV" id="iUg-Mw-pi1"/>
+                        <outlet property="username" destination="0S6-ZE-MNX" id="9Jw-GN-NP4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOv-5E-eCy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

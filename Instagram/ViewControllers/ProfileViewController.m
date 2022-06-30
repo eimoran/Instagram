@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *gridView;
 - (IBAction)chooseProfilePic:(id)sender;
 @property (strong, nonatomic) NSMutableArray *postArray;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+
 //@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
@@ -29,12 +31,13 @@
     // Do any additional setup after loading the view.
     self.gridView.dataSource = self;
     self.gridView.delegate = self;
-//    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.gridView.collectionViewLayout;
-//    layout.minimumLineSpacing =15;
-//    layout.minimumInteritemSpacing  = 0;
-//    CGFloat itemWidth = 120;//(self.gridView.frame.size.width/3 - 15);
-//    CGFloat itemHeight = itemWidth;
-//    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.gridView.collectionViewLayout;
+    layout.minimumLineSpacing =0;
+    layout.minimumInteritemSpacing = 0;
+    NSLog(@"%f", self.gridView.frame.size.width);
+    CGFloat itemWidth = (self.gridView.frame.size.width/3 - 15);
+    CGFloat itemHeight = itemWidth;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 //    self.gridView.heightAnchor =
     
     UITapGestureRecognizer *imageTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(chooseProfilePic:)];
@@ -43,6 +46,7 @@
     
     
     self.postArray = [[NSMutableArray alloc] init];
+    
     [self getPosts];
     
     
@@ -58,13 +62,15 @@
     else{
         self.profilePic.image = [UIImage imageNamed:@"profile_tab"];
     }
+//    NSLog(@"%@", user.username);
+    self.username.text = user.username;
     
 }
 
 - (void)getPosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query includeKey:@"author"];
-    query.limit = 20;
+    query.limit = 100;
     [query orderByDescending:@"createdAt"];
 
     // fetch data asynchronously
@@ -132,11 +138,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)gridView cellForItemAtIndexPath:
     (NSIndexPath *)indexPath {
-//    NSLog(@"%@", self.postArray);
     GridCell *cell = [gridView dequeueReusableCellWithReuseIdentifier:@"GridCell" forIndexPath:indexPath];
     
     cell.post = self.postArray[indexPath.row];
-//    [cell.post fetchIfNeeded];
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: cell.post.image.url]];
     cell.profilePost.image = [UIImage imageWithData: imageData];
     
